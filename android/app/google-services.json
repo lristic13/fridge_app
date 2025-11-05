@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "1006483296763",
+    "firebase_url": "https://brew-crew-40962.firebaseio.com",
+    "project_id": "brew-crew-40962",
+    "storage_bucket": "brew-crew-40962.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1006483296763:android:c0663f7c53f0b3bd76bb5e",
+        "android_client_info": {
+          "package_name": "com.example.fridge_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB8HQoVcQxbEVaC6HUb0JOAYeajQn2TLMk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
