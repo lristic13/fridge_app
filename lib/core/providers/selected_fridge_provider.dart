@@ -43,3 +43,9 @@ final selectedFridgeProvider =
       final fridgeRepository = ref.watch(fridgeRepositoryProvider);
       return SelectedFridgeNotifier(fridgeRepository);
     });
+
+/// Provider that only tracks whether a fridge is selected (not the full object).
+/// Used by the router to avoid rebuilding when fridge details change.
+final hasFridgeSelectedProvider = Provider<bool>((ref) {
+  return ref.watch(selectedFridgeProvider) != null;
+});

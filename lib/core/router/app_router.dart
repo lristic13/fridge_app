@@ -15,7 +15,7 @@ import 'package:go_router/go_router.dart';
 
 final routerProvider = Provider<GoRouter>((ref) {
   final isAuthenticated = ref.watch(isAuthenticatedProvider);
-  final selectedFridge = ref.watch(selectedFridgeProvider);
+  final hasFridgeSelected = ref.watch(hasFridgeSelectedProvider);
 
   return GoRouter(
     initialLocation: AppRoutes.login,
@@ -35,7 +35,7 @@ final routerProvider = Provider<GoRouter>((ref) {
       }
 
       if (isAuthenticated &&
-          selectedFridge == null &&
+          !hasFridgeSelected &&
           !isSelectingFridge &&
           !isCreatingFridge) {
         return AppRoutes.fridgeSelection;

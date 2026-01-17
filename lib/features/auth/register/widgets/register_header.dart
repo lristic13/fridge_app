@@ -12,14 +12,6 @@ class AppRegisterHeader extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () {
-            context.pop();
-          },
-          padding: EdgeInsets.zero,
-          alignment: Alignment.centerLeft,
-        ),
         const SizedBox(height: 16),
         const Text(
           AppStrings.signUp,
@@ -32,10 +24,7 @@ class AppRegisterHeader extends StatelessWidget {
         const SizedBox(height: 8),
         const Text(
           'Create an account to get started',
-          style: TextStyle(
-            fontSize: 16,
-            color: AppColors.textSecondary,
-          ),
+          style: TextStyle(fontSize: 16, color: AppColors.textSecondary),
         ),
       ],
     );

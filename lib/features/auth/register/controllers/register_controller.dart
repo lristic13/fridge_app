@@ -1,13 +1,17 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:fridge_app/core/providers/user_provider.dart';
 import 'package:fridge_app/core/utils/app_exception.dart';
 import 'package:fridge_app/features/auth/data/repositories/auth_repository.dart';
 import 'package:fridge_app/features/auth/register/models/register_state.dart';
+import 'package:fridge_app/features/users/data/repositories/user_repository.dart';
 
 /// Register controller using Riverpod StateNotifier
 class RegisterController extends StateNotifier<RegisterState> {
   final AuthRepository _authRepository;
+  final UserRepository _userRepository;
 
-  RegisterController(this._authRepository) : super(const RegisterState());
+  RegisterController(this._authRepository, this._userRepository)
+      : super(const RegisterState());
 
   /// Register with email and password
   Future<bool> register({
@@ -17,9 +21,14 @@ class RegisterController extends StateNotifier<RegisterState> {
     state = state.copyWith(isLoading: true, errorMessage: null);
 
     try {
-      await _authRepository.register(
+      final user = await _authRepository.register(
         email: email,
         password: password,
+      );
+
+      await _userRepository.createUser(
+        userId: user.uid,
+        email: email,
       );
 
       state = state.copyWith(isLoading: false);
@@ -48,5 +57,6 @@ class RegisterController extends StateNotifier<RegisterState> {
 /// Provider for RegisterController
 final registerControllerProvider =
     StateNotifierProvider<RegisterController, RegisterState>((ref) {
-  return RegisterController(AuthRepository());
+  final userRepository = ref.watch(userRepositoryProvider);
+  return RegisterController(AuthRepository(), userRepository);
 });

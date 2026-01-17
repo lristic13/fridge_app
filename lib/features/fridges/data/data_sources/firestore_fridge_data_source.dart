@@ -103,4 +103,17 @@ class FirestoreFridgeDataSource {
       throw AppException('Failed to add member to fridge');
     }
   }
+
+  Future<void> removeMemberFromFridge({
+    required String fridgeId,
+    required String userId,
+  }) async {
+    try {
+      await _firestore.collection(_collectionName).doc(fridgeId).update({
+        'memberIds': FieldValue.arrayRemove([userId]),
+      });
+    } catch (e) {
+      throw AppException('Failed to remove member from fridge');
+    }
+  }
 }

@@ -1,7 +1,7 @@
 class AppStrings {
   AppStrings._();
 
-  static const String appName = 'FridgeApp';
+  static const String appName = 'refridge.';
   static const String settings = 'Settings';
   static const String fridgeName = 'Fridge Name';
 
@@ -61,4 +61,20 @@ class AppStrings {
   static const String emptyFridgeDescription =
       'Start tracking your groceries by adding your first product';
   static const String noProductsFound = 'No Products found';
+
+  static const String logoutConfirmTitle = 'Log out';
+  static const String logoutConfirmMessage =
+      'Are you sure you want to log out?';
+  static const String cancel = 'Cancel';
+
+  static const String members = 'Members';
+  static const String viewAndManageMembers = 'View and manage fridge members';
+  static const String owner = 'Owner';
+  static const String you = 'You';
+  static const String remove = 'Remove';
+  static const String removeMemberTitle = 'Remove Member';
+  static const String removeMemberMessage =
+      'Are you sure you want to remove this member from the fridge?';
+  static const String memberRemoved = 'Member removed successfully';
+  static const String addMember = 'Add Member';
 }

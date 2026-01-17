@@ -33,4 +33,11 @@ class FridgeRepository {
   }) async {
     await _dataSource.addMemberToFridge(fridgeId: fridgeId, userId: userId);
   }
+
+  Future<void> removeMemberFromFridge({
+    required String fridgeId,
+    required String userId,
+  }) async {
+    await _dataSource.removeMemberFromFridge(fridgeId: fridgeId, userId: userId);
+  }
 }

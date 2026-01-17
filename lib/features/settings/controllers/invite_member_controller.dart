@@ -35,7 +35,8 @@ class InviteMemberController extends StateNotifier<InviteMemberState> {
   InviteMemberController(this._userRepository, this._fridgeRepository)
     : super(InviteMemberState());
 
-  Future<bool> inviteMember({
+  /// Returns the added user's ID on success, null on failure
+  Future<String?> inviteMember({
     required String fridgeId,
     required String currentUserId,
     required String email,
@@ -54,7 +55,7 @@ class InviteMemberController extends StateNotifier<InviteMemberState> {
           isLoading: false,
           errorMessage: 'No user found with email: $email',
         );
-        return false;
+        return null;
       }
 
       if (userId == currentUserId) {
@@ -62,7 +63,7 @@ class InviteMemberController extends StateNotifier<InviteMemberState> {
           isLoading: false,
           errorMessage: 'You cannot invite yourself',
         );
-        return false;
+        return null;
       }
 
       await _fridgeRepository.addMemberToFridge(
@@ -74,13 +75,13 @@ class InviteMemberController extends StateNotifier<InviteMemberState> {
         isLoading: false,
         successMessage: 'Member invited successfully',
       );
-      return true;
+      return userId;
     } catch (e) {
       state = state.copyWith(
         isLoading: false,
         errorMessage: 'Failed to invite member: ${e.toString()}',
       );
-      return false;
+      return null;
     }
   }
 
